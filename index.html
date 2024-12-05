@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контроль осанки</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Трекер осанки</h1>
+            <p class="subtitle">Следите за своей осанкой в режиме реального времени</p>
+        </header>
+        
+        <div class="theme-switch">
+            <button onclick="toggleTheme()" aria-label="Переключить тему">
+                <span id="themeIcon">☀️</span>
+            </button>
+        </div>
+
+        <div class="video-container">
+            <video id="webcam" class="webcam" width="640" height="480"></video>
+            <canvas id="canvas" class="overlay" width="640" height="480"></canvas>
+        </div>
+
+        <div class="controls">
+            <div id="status" class="status">Загрузка...</div>
+            
+            <div class="buttons">
+                <button id="calibrateButton" class="button button-secondary">
+                    <span class="button-icon">📏</span>
+                    Калибровка
+                </button>
+                <button id="startButton" class="button button-primary">
+                    <span class="button-icon">▶️</span>
+                    Начать отслеживание
+                </button>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <div class="instructions-header">
+                <h2>Как использовать:</h2>
+                <button id="instructionsToggle" class="toggle-button">
+                    <span class="toggle-icon">⧀</span>
+                </button>
+            </div>
+            <div id="instructionsContent" class="collapsed">
+                <ol>
+                    <li>Сядьте прямо перед камерой</li>
+                    <li>Нажмите "Калибровка" для установки правильного положения</li>
+                    <li>Нажмите "Начать отслеживание"</li>
+                    <li>Получайте уведомления при неправильной осанке</li>
+                </ol>
+            </div>
+        </div>
+    </div>    
+    <script src="https://unpkg.com/@tensorflow/tfjs"></script>
+    <script src="https://unpkg.com/@tensorflow-models/posenet"></script>
+    <script src="camera.js"></script>
+</body>
+</html>
